@@ -15,9 +15,26 @@
                 <p><?php the_date() ?> <?php the_author() ?></p>
                 <?php the_post_thumbnail() ?>
                 <div><?php the_content() ?></div>
-                <small><?php the_category('') ?> || <?php the_tags() ?> || <?php edit_post_link() ?></small>
+                <small><?php 
+                    $terms_list = wp_get_post_terms($post->ID, 'field');
+                    $i = 0;
+                    foreach($terms_list as $term) { 
+                        $i++;
+                        if($i > 1) echo ', ';
+                        echo $term->name;
+                    }
+                ?> ||<?php 
+                    $terms_list = wp_get_post_terms($post->ID, 'software');
+                    $i = 0;
+                    foreach($terms_list as $term) { 
+                        $i++;
+                        if($i > 1) echo ', ';
+                        echo $term->name;
+                    }
+                ?> || <?php edit_post_link() ?>
+                </small>
+                <?php the_content() ?>
             </div>
-            <hr>
 
             <div class="row">
                 <div class="pagination-newer">
