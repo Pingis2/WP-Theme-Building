@@ -15,23 +15,14 @@
                 <p><?php the_date() ?> <?php the_author() ?></p>
                 <?php the_post_thumbnail() ?>
                 <div><?php the_content() ?></div>
-                <small><?php 
-                    $terms_list = wp_get_post_terms($post->ID, 'field');
-                    $i = 0;
-                    foreach($terms_list as $term) { 
-                        $i++;
-                        if($i > 1) echo ', ';
-                        echo $term->name;
-                    }
-                ?> ||<?php 
-                    $terms_list = wp_get_post_terms($post->ID, 'software');
-                    $i = 0;
-                    foreach($terms_list as $term) { 
-                        $i++;
-                        if($i > 1) echo ', ';
-                        echo $term->name;
-                    }
-                ?> || <?php edit_post_link() ?>
+                <small>
+                    <?php echo aweseme_get_terms($post->ID, 'field')?> ||
+                    <?php echo aweseme_get_terms($post->ID, 'software')?>
+                    <?php
+                        if (current_user_can('manage_options')) {
+                            echo '|| '; edit_post_link();
+                        }
+                    ?>
                 </small>
                 <?php the_content() ?>
             </div>
