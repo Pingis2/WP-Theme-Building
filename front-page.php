@@ -30,7 +30,7 @@
             <?php 
                 $args = array(
                     'post_type' => 'post',
-                    'posts_per_page' => 3
+                    'posts_per_page' => 4
                 );
                 $latest_posts = new WP_Query($args);
 
@@ -38,9 +38,19 @@
                     while( $latest_posts->have_posts() ): $latest_posts->the_post(); ?>
                     <div class="post-container">
                         <a href="<?php the_permalink() ?>">
-                            <h3><?php the_title() ?></h3>
-                            <?php the_post_thumbnail() ?>
+                            <h3 class="post-title"><?php the_title() ?></h3>
+                            <?php the_post_thumbnail( 'medium', array('class' => 'post-image')) ?>
                         </a>
+                        <div class="categories">
+                            <?php 
+                                $categories = get_the_category();
+                                if ( ! empty( $categories ) ) {
+                                    foreach ( $categories as $category ) {
+                                        echo '<a class="category-link" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>';
+                                    }
+                                }
+                            ?>
+                        </div>
                     </div>
                     
                     <?php endwhile;

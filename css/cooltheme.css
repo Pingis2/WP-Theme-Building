@@ -9,12 +9,12 @@ header {
     background-color: rgb(63 63 171);
     height: 75px;
     width: 100%;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
 }
 
 h1 {
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
 }
 
 footer {
@@ -27,7 +27,7 @@ footer {
 
 h2 {
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content {
@@ -73,7 +73,7 @@ a {
     justify-content: flex-end;
     gap: 10px;
     margin: 0 20px 0 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
 }
 
 #menu-main-navigation {
@@ -99,14 +99,13 @@ a {
 }
 
 .widget-area {
-    width: 200px;
-    margin: 10px;
+    width: 500px;
     background-color: rgb(63 63 171);
     padding: 10px;
-    box-shadow: 0px 5px 10px grey;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
 }
 
 .row {
@@ -139,7 +138,7 @@ nav {
 }
 
 .intro-text {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.5rem;
     width: 500px;
     margin: 40px auto 0 auto;
@@ -157,7 +156,59 @@ nav {
 }
 
 .posts-container {
-    background-color: green;
-    height: 500px;
+    background-color: rgb(63 63 171);
+    display: flex;
+    flex-direction: row;
+    height: auto;
     width: 100%;
+    gap: 20px;
+}
+
+.latest-posts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 1100px;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+h3 {
+    margin: 0;
+}
+
+.post-container {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    padding: 20px;
+    position: relative;
+}
+
+.post-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.post-image {
+    margin: 20px 0 0 0;
+    width: auto;
+    height: 300px;
+    position: relative;
+    filter: blur(3px);
 }
