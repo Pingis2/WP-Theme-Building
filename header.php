@@ -22,10 +22,10 @@
     </a>
     <nav>
         <?php wp_nav_menu(array('theme_location' => 'primary')) ?>
+
+        <div class="search-container">
+            <?php get_search_form() ?>
+        </div>  
     </nav>
 
 </header>
-
-<div class="search-container">
-    <?php get_search_form() ?>
-</div>

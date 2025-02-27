@@ -1,14 +1,56 @@
 <?php get_header() ?>
 
-<h1>Welcome to LifeLabSci</h1>
+<section>
+    <div class="intro-container">
+        <article class="intro-text">
+        In the state-of-the-art laboratories of LifeLabSci, a team of brilliant scientists stands on the brink of a historic breakthrough.
+        Clad in white lab coats and safety goggles, they work meticulously, analyzing glowing samples under a high-powered microscope.
+        One researcher carefully updates the periodic table, marking the addition of a newly discovered element, while digital screens
+        around them display atomic structures and streams of complex data.<br><br>
 
-<?php if( have_posts() ):
-    while( have_posts() ): the_post(); ?>
-        <h2><?php the_title() ?></h2>
-        <?php the_content() ?>
-    <?php endwhile;
-endif;
-?>
+        With cutting-edge equipment, including mass spectrometers and particle accelerators,
+        LifeLabSci is pushing the boundaries of scientific exploration. 
+        Each calculation, every test, brings them one step closer to unlocking the secrets
+        of the universe. The discovery of a new element is not just an achievement—it is a
+        testament to human curiosity and relentless innovation.
+        </article>
+        <div class="image-container">
+            <img 
+                src="<?php echo get_template_directory_uri() . '/assets/scientists_discovering_elements.jpg' ?>" 
+                alt="Scientists discovering elements"
+                class="intro-img"
+            >
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="posts-container">
+        <div class="latest-posts">
+            <?php 
+                $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 3
+                );
+                $latest_posts = new WP_Query($args);
+
+                if( $latest_posts->have_posts() ):
+                    while( $latest_posts->have_posts() ): $latest_posts->the_post(); ?>
+                    <div class="post-container">
+                        <a href="<?php the_permalink() ?>">
+                            <h3><?php the_title() ?></h3>
+                            <?php the_post_thumbnail() ?>
+                        </a>
+                    </div>
+                    
+                    <?php endwhile;
+                endif;
+            ?>
+        </div>
+
+        <?php get_sidebar() ?>
+    </div>
+</section>
 
 <?php
     //print the first post
@@ -61,9 +103,6 @@ endif;
     */
 ?>
 
-<hr>
-
-
 <?php 
 /*
     //print only tutorials
@@ -84,9 +123,5 @@ endif;
     wp_reset_postdata();
 */
 ?>
-
-
-
-<?php get_sidebar() ?>
 
 <?php get_footer() ?>
