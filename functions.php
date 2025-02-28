@@ -1,6 +1,9 @@
 <?php
 
 // include scripts
+
+use function Avifinfo\read;
+
 function titles() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -59,7 +62,23 @@ function awesome_widget_setup() {
     );
 }
 
+function latest_posts_widget() {
+    register_sidebar(
+        array(
+            'name' => 'Latest Posts',
+            'id' => 'latest-posts',
+            'class' => 'widget-posts',
+            'description' => 'Latest Posts Sidebar',
+            'before_widget' => '<aside id="%1$s" class="%2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h1 class="widget-title">',
+            'after_title' => '</h1>',
+        )
+    );
+}
+
 add_action('widgets_init', 'awesome_widget_setup');
+add_action('widgets_init', 'latest_posts_widget');
 
 // Head function
 

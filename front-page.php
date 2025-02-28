@@ -27,6 +27,8 @@
 <section>
     <div class="posts-container">
         <div class="latest-posts">
+        <h2 class="latest-posts-title">Latest Posts</h2>
+        <div class="posts">
             <?php 
                 $args = array(
                     'post_type' => 'post',
@@ -57,6 +59,9 @@
                 endif;
             ?>
         </div>
+        </div>
+
+        <hr>
 
         <?php get_sidebar() ?>
     </div>
