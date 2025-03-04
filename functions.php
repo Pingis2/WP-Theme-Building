@@ -86,62 +86,35 @@ function latest_posts_widget() {
 add_action('widgets_init', 'awesome_widget_setup');
 add_action('widgets_init', 'latest_posts_widget');
 
-
 // Custom Header
-
-function my_cool_theme_register_patterns() {
-    register_block_pattern(
-        'my-cool-theme/header-pattern',
-        array(
-            'title' => __('Header Pattern', 'my-cool-theme'),
-            'description' => _x('A header pattern with a title and a button.', 'Block pattern description', 'my-cool-theme'),
-            'content' => '
-                <!-- wp:html -->
-                <header>
-                    <a href="' . esc_url(home_url()) . '">
-                        <div class="header-logo-container">
-                            <img
-                                src="' . esc_url(get_template_directory_uri() . '/assets/LifeLabSci-logo.jpg') . '" 
-                                alt="LifeLabSci logo" 
-                                class="header-logo"
-                            >
-                            <p class="header-title">LifeLabSci</p>
-                        </div>  
-                    </a>
-                    <nav>
-                        ' . wp_nav_menu(array('theme_location' => 'primary', 'echo' => false)) . '
-                        <div class="search-container">
-                            ' . get_search_form(false) . '
-                        </div>  
-                    </nav>
-                </header>
-                <!-- wp:html -->
-            ',
-        )
-    );
-}
-
-add_action('init', 'my_cool_theme_register_patterns');
-
-// Custom Header 2
 
 function mytheme_register_patterns() {
     register_block_pattern(
-        'mytheme/header',
+        'my-cool-theme/header',
         array(
-            'title' => __('Header', 'mytheme'),
-            'description' => __('A header with a title and a button.', 'Block pattern description', 'mytheme'),
-            'content' => file_get_contents( get_template_directory() . 'patters/header.html' ),
+            'title' => __('Header', 'my-cool-theme'),
+            'description' => __('A header with a title and a button.', 'Block pattern description', 'my-cool-theme'),
+            'content' => file_get_contents( get_template_directory() . 'patterns/header.html' ),
             'categories' => array('header'),
         )
     );
 
     register_block_pattern(
-        'mytheme/footer',
+        'my-cool-theme/intro-text',
         array(
-            'title' => __('Footer', 'mytheme'),
-            'description' => __('A footer with a title and a button.', 'Block pattern description', 'mytheme'),
-            'content' => file_get_contents( get_template_directory() . 'patters/footer.html' ),
+            'title' => __('Intro Text', 'my-cool-theme'),
+            'description' => __('An introductory text with a title and a button.', 'Block pattern description', 'my-cool-theme'),
+            'content' => file_get_contents( get_template_directory() . 'patterns/intro-text.html' ),
+            'categories' => array('intro-text')
+        )
+    );
+
+    register_block_pattern(
+        'my-cool-theme/footer',
+        array(
+            'title' => __('Footer', 'my-cool-theme'),
+            'description' => __('A footer with a title and a button.', 'Block pattern description', 'my-cool-theme'),
+            'content' => file_get_contents( get_template_directory() . 'patterns/footer.html' ),
             'categories' => array('footer'),
         )
     );
