@@ -4,7 +4,7 @@
 
 <?php 
     $args = array(
-        'posts_per_page' => 3,
+        'posts_per_page' => 5,
     );
     query_posts($args);
 
@@ -12,14 +12,28 @@
         the_post();?>
         <div>
             <div class="content">
-                <a href="<?php the_permalink()?>">
-                    <h3><?php the_title() ?></h3>
-                </a>
-                <?php echo 'THIS IS THE FORMAT: ' . get_post_format(); ?>
-                <?php get_template_part('content', get_post_format()); ?>
-                <div class="thumbnail-img"><?php the_post_thumbnail('thumbnail') ?></div>
-                <p><?php the_date() ?> <?php the_author() ?></p>
-                <small><?php the_category('') ?> <?php the_tags() ?></small>
+                <div class="thumbnail-img"><?php the_post_thumbnail('medium', array('class' => 'post-thumbnail')) ?></div>
+                <div class="title-text">
+                    <a href="<?php the_permalink()?>">
+                        <h3 class="post-title-blog"><?php the_title() ?></h3>
+                    </a>
+                    <?php the_content() ?>
+                </div>
+                <div class="post-info">
+                    <p class="upload-date">Upload date: <?php the_time('F j, Y') ?></p>
+                    <div class="categories-blog">
+                        <?php 
+                            echo 'Tags: ';
+                            $categories = get_the_category();
+                            if ( ! empty( $categories ) ) {
+                                foreach ( $categories as $category ) {
+                                    echo '<a class="blog-category-link" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>';
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                
             </div>
             <hr>
         </div>

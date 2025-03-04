@@ -2,8 +2,6 @@
 
 // include scripts
 
-use function Avifinfo\read;
-
 function titles() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -22,6 +20,14 @@ function my_css_and_js() {
 }
 
 add_action('wp_enqueue_scripts', 'my_css_and_js');
+
+// Full site edit support
+
+function mytheme_setup() {
+    add_theme_support('block-bases-theme');
+}
+
+add_action('after_setup_theme', 'mytheme_setup');
 
 // Menus
 
@@ -79,6 +85,69 @@ function latest_posts_widget() {
 
 add_action('widgets_init', 'awesome_widget_setup');
 add_action('widgets_init', 'latest_posts_widget');
+
+
+// Custom Header
+
+function my_cool_theme_register_patterns() {
+    register_block_pattern(
+        'my-cool-theme/header-pattern',
+        array(
+            'title' => __('Header Pattern', 'my-cool-theme'),
+            'description' => _x('A header pattern with a title and a button.', 'Block pattern description', 'my-cool-theme'),
+            'content' => '
+                <!-- wp:html -->
+                <header>
+                    <a href="' . esc_url(home_url()) . '">
+                        <div class="header-logo-container">
+                            <img
+                                src="' . esc_url(get_template_directory_uri() . '/assets/LifeLabSci-logo.jpg') . '" 
+                                alt="LifeLabSci logo" 
+                                class="header-logo"
+                            >
+                            <p class="header-title">LifeLabSci</p>
+                        </div>  
+                    </a>
+                    <nav>
+                        ' . wp_nav_menu(array('theme_location' => 'primary', 'echo' => false)) . '
+                        <div class="search-container">
+                            ' . get_search_form(false) . '
+                        </div>  
+                    </nav>
+                </header>
+                <!-- wp:html -->
+            ',
+        )
+    );
+}
+
+add_action('init', 'my_cool_theme_register_patterns');
+
+// Custom Header 2
+
+function mytheme_register_patterns() {
+    register_block_pattern(
+        'mytheme/header',
+        array(
+            'title' => __('Header', 'mytheme'),
+            'description' => __('A header with a title and a button.', 'Block pattern description', 'mytheme'),
+            'content' => file_get_contents( get_template_directory() . 'patters/header.html' ),
+            'categories' => array('header'),
+        )
+    );
+
+    register_block_pattern(
+        'mytheme/footer',
+        array(
+            'title' => __('Footer', 'mytheme'),
+            'description' => __('A footer with a title and a button.', 'Block pattern description', 'mytheme'),
+            'content' => file_get_contents( get_template_directory() . 'patters/footer.html' ),
+            'categories' => array('footer'),
+        )
+    );
+}
+
+add_action('init', 'mytheme_register_patterns');
 
 // Head function
 
