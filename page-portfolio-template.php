@@ -3,7 +3,7 @@
 /*
     Template Name: Portfolio template
 */
-    get_header() 
+    //get_header() 
 ?>
 
 <?php 
@@ -19,4 +19,6 @@
     <?php }
 ?>
 
-<?php get_footer() ?>
+<?php echo do_shortcode('[oxilab_flip_box  id="1"]'); ?>
+
+<?php //get_footer() ?>

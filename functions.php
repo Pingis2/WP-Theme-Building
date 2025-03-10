@@ -134,15 +134,15 @@ add_filter('the_generator', 'awesome_remove_version');
 
 function awesome_post_type() {
     $labels = array(
-        'name' => 'Portfolio',
-        'singular_name' => 'Portfolio',
-        'add_new' => 'Add Portfolio Item',
+        'name' => 'Projects',
+        'singular_name' => 'Project',
+        'add_new' => 'Add Project Item',
         'all_items' => 'All Items',
         'add_new_item' => 'Add Item',
         'edit_item' => 'Edit Item',
         'new_item' => 'New Item',
         'view_item' => 'View Item',
-        'search_item' => 'Search Portfolio',
+        'search_item' => 'Search Projects',
         'not_found' => 'No items found',
         'not_found_in_trash' => 'No items found in trash',
         'parent_item_colon' => 'Parent Item'
@@ -153,9 +153,10 @@ function awesome_post_type() {
         'has_archive' => true,
         'publicly_queryable' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'portfolio'),
+        'rewrite' => array('slug' => 'projects'),
         'capability_type' => 'post',
         'hierarchical' => false,
+        'show_in_rest' => true,
         'supports' => array(
             'title',
             'editor',
@@ -168,7 +169,7 @@ function awesome_post_type() {
         'exclude_from_search' => false
     );
 
-    register_post_type('portfolio', $args);
+    register_post_type('projects', $args);
 }
 
 add_action('init', 'awesome_post_type');
