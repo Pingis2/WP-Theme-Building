@@ -241,3 +241,13 @@ function wdo_disable_srcset( $sources ) {
 }
 
 add_filter( 'wp_calculate_image_srcset', 'wdo_disable_srcset' );
+
+// Search Filter
+
+function modify_search_query($query) {
+    if ($query->is_search() && !is_admin()) {
+        $query->set('post_type', ['projects']);
+    }
+}
+
+add_action('pre_get_posts', 'modify_search_query');
