@@ -15,6 +15,7 @@ header {
 h1 {
     text-align: center;
     font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    color: white;
 }
 
 /*
@@ -262,4 +263,32 @@ h3 {
 .post-info {
     display: flex;
     flex-direction: column;
+}
+
+.search-query-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.search-result-item {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: auto;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.search-result-item img {
+    width: auto;
+    height: 400px;
+}
+
+.search-results-text {
+    color: white;
+    text-align: left;
+    text-decoration: underline;
+    margin-left: 20px;
 }

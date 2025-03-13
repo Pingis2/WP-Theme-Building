@@ -153,7 +153,13 @@ function awesome_post_type() {
         'has_archive' => true,
         'publicly_queryable' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'projects'),
+        'rewrite' => array(
+            'slug' => 'projects',
+            'with_front' => false,
+            'pages' => true,
+            'feeds' => true,
+            'inherit' => true,
+        ),
         'capability_type' => 'post',
         'hierarchical' => false,
         'show_in_rest' => true,
@@ -162,11 +168,17 @@ function awesome_post_type() {
             'editor',
             'excerpt',
             'thumbnail',
-            'revisions'
+            'revisions',
         ),
         'taxonomies' => array('category', 'post_tag'),
         'menu_position' => 5,
-        'exclude_from_search' => false
+        'exclude_from_search' => false,
+        'template' => array(
+            array('core/paragraph', array(
+                'placeholder' => 'Add the project description here...',
+            )),
+        ),
+        'template_lock' => 'all',
     );
 
     register_post_type('projects', $args);
@@ -250,4 +262,4 @@ function modify_search_query($query) {
     }
 }
 
-add_action('pre_get_posts', 'modify_search_query');
+//add_action('pre_get_posts', 'modify_search_query');
