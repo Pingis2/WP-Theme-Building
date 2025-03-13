@@ -169,6 +169,7 @@ function awesome_post_type() {
             'excerpt',
             'thumbnail',
             'revisions',
+            'comments',
         ),
         'taxonomies' => array('category', 'post_tag'),
         'menu_position' => 5,
@@ -256,10 +257,24 @@ add_filter( 'wp_calculate_image_srcset', 'wdo_disable_srcset' );
 
 // Search Filter
 
+
 function modify_search_query($query) {
     if ($query->is_search() && !is_admin()) {
         $query->set('post_type', ['projects']);
     }
 }
 
+
 //add_action('pre_get_posts', 'modify_search_query');
+
+// Comments support for custom post types
+
+function enable_comments_rest_support() {
+    global $wp_post_types;
+    if (isset($wp_post_types['projects'])) {
+        $wp_post_types['projects']->show_in_rest = true;
+        $wp_post_types['projects']->supports[] = 'comments';
+    }
+}
+
+add_action('init', 'enable_comments_rest_support', 11);
