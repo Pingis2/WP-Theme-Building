@@ -215,13 +215,16 @@ function awesome_custom_taxonomies() {
         'rewrite' => array('slug' => 'field')
     );
 
-    register_taxonomy('field', array('portfolio'), $args);
+    // register_taxonomy('field', array('projects'), $args);
 
     // add new taxonomy NOT hierarchical
-    register_taxonomy('software', 'portfolio', array(
-        'label' => 'Software',
-        'rewrite' => array('slug' => 'software'),
-        'hierarchical' => false
+    register_taxonomy('language', 'projects', array(
+        'label' => 'Language',
+        'rewrite' => array('slug' => 'language'),
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'show_in_rest' => true,
     ));
 }
 
@@ -278,3 +281,26 @@ function enable_comments_rest_support() {
 }
 
 add_action('init', 'enable_comments_rest_support', 11);
+
+// Add custom taxonomy column to the admin dashboard for 'projects'
+function add_language_column($columns) {
+    $columns['language'] = __('Language', 'my-cool-theme'); // Add a new column for the 'Language' taxonomy
+    return $columns;
+}
+add_filter('manage_projects_posts_columns', 'add_language_column');
+
+// Populate the 'Language' column with the assigned terms
+function populate_language_column($column, $post_id) {
+    if ($column === 'language') {
+        $terms = get_the_terms($post_id, 'language'); // Get the terms for the 'language' taxonomy
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $term_links = array_map(function($term) {
+                return sprintf('<a href="%s">%s</a>', esc_url(get_edit_term_link($term->term_id, 'language')), esc_html($term->name));
+            }, $terms);
+            echo implode(', ', $term_links); // Display the terms as links
+        } else {
+            echo __('No Language Assigned', 'my-cool-theme'); // Fallback if no terms are assigned
+        }
+    }
+}
+add_action('manage_projects_posts_custom_column', 'populate_language_column', 10, 2);

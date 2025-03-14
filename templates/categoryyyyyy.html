@@ -1,0 +1,59 @@
+<!-- wp:template-part {"slug":"header-2","theme":"my-cool-theme","area":"header"} /-->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:buttons -->
+    <div class="wp-block-buttons"><!-- wp:button {"style":{"color":{"background":"#061a36"}}} -->
+    <div class="wp-block-button"><a class="wp-block-button__link has-background wp-element-button" href="http://localhost:8000/projects/" style="background-color:#061a36">Show All</a></div>
+    <!-- /wp:button --></div>
+    <!-- /wp:buttons -->
+    
+    <!-- wp:buttons -->
+    <div class="wp-block-buttons"><!-- wp:button {"style":{"color":{"background":"#6388b0"}}} -->
+    <div class="wp-block-button"><a class="wp-block-button__link has-background wp-element-button" style="background-color:#6388b0">Vanilla JS</a></div>
+    <!-- /wp:button --></div>
+    <!-- /wp:buttons -->
+    
+    <!-- wp:buttons -->
+    <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-fill","style":{"color":{"background":"#061a36"}}} -->
+    <div class="wp-block-button is-style-fill"><a class="wp-block-button__link has-background wp-element-button" href="http://localhost:8000/category/vue/" style="background-color:#061a36">Vue</a></div>
+    <!-- /wp:button --></div>
+    <!-- /wp:buttons -->
+    
+    <!-- wp:buttons -->
+    <div class="wp-block-buttons"><!-- wp:button {"style":{"color":{"background":"#061a36"}}} -->
+    <div class="wp-block-button"><a class="wp-block-button__link has-background wp-element-button" href="http://localhost:8000/category/react/" style="background-color:#061a36">React</a></div>
+    <!-- /wp:button --></div>
+    <!-- /wp:buttons -->
+    
+    <!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search","width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /--></div>
+    <!-- /wp:group -->
+    
+    <!-- wp:query {"queryId":40,"query":{"perPage":10,"pages":0,"offset":0,"postType":"projects","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"taxQuery":{"category":[38]},"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-grid-posts","name":"Grid"}} -->
+    <div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+    <!-- wp:group {"style":{"spacing":{"padding":{"top":"30px","right":"30px","bottom":"30px","left":"30px"}}},"layout":{"inherit":false}} -->
+    <div class="wp-block-group" style="padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px"><!-- wp:post-title {"isLink":true,"linkTarget":"_blank","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"large"} /-->
+    
+    <!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/2","linkTarget":"_blank"} /-->
+    
+    <!-- wp:post-excerpt {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"medium"} /-->
+    
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+    <div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+    <p class="has-white-color has-text-color has-link-color">Upload date:</p>
+    <!-- /wp:paragraph -->
+    
+    <!-- wp:post-date {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} /--></div>
+    <!-- /wp:group -->
+    
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+    <div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+    <p class="has-white-color has-text-color has-link-color">Categories:</p>
+    <!-- /wp:paragraph -->
+    
+    <!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} /--></div>
+    <!-- /wp:group --></div>
+    <!-- /wp:group -->
+    <!-- /wp:post-template --></div>
+    <!-- /wp:query -->
+    
+    <!-- wp:template-part {"slug":"footer-2","theme":"my-cool-theme","area":"footer"} /-->
