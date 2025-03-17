@@ -12,7 +12,7 @@ add_action('after_setup_theme', 'titles');
 function my_css_and_js() {
     wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/cooltheme.css', array(), '1.0', 'all');    wp_enqueue_script(
         'main-js',
-        get_template_directory_uri(), '/js/main.js',
+        get_template_directory_uri(), '/js/app.js',
         NULL,
         '1.0',
         true
