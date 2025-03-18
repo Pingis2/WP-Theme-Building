@@ -28,11 +28,65 @@ const auth = {
 
 app.get('/posts', async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:8000/wp-json/wp/v2/posts', { auth});
+
+        const { language } = req.query;
+
+        let apiUrl = 'http://localhost:8000/wp-json/wp/v2/projects';
+        if (language) {
+            apiUrl += `?lang=${language}`;
+        }
+
+        const response = await axios.get(apiUrl, { auth });
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: error.message });
 
+    }
+})
+
+app.get('/posts/category', async (req, res) => {
+    try {
+       
+        const { category } = req.query; // Get the language from the query parameter
+
+        // Base API URL for fetching posts
+        let apiUrl = 'http://localhost:8000/wp-json/wp/v2/projects';
+
+        // Add the language filter if provided
+        if (category) {
+            apiUrl += `?categories=${category}`; // Use the taxonomy slug as the query parameter
+        }
+
+        // Make the API call to WordPress
+        const response = await axios.get(apiUrl, { auth });
+
+        // Return the filtered posts
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
+app.get('/posts/language', async (req, res) => {
+    try {
+       
+        const { language } = req.query; // Get the language from the query parameter
+
+        // Base API URL for fetching posts
+        let apiUrl = 'http://localhost:8000/wp-json/wp/v2/projects';
+
+        // Add the language filter if provided
+        if (language) {
+            apiUrl += `?language=${language}`; // Use the taxonomy slug as the query parameter
+        }
+
+        // Make the API call to WordPress
+        const response = await axios.get(apiUrl, { auth });
+
+        // Return the filtered posts
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 })
 

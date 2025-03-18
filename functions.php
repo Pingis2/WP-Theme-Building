@@ -304,3 +304,15 @@ function populate_language_column($column, $post_id) {
     }
 }
 add_action('manage_projects_posts_custom_column', 'populate_language_column', 10, 2);
+
+add_filter( 'wp_is_application_passwords_available', '__return_true' );
+
+/*
+add_action('rest_api_init', function () {
+    register_rest_field('projects', 'language', [
+        'get_callback' => function ($object) {
+            return wp_get_post_terms($object['id'], 'language', ['fields' => 'slugs']);
+        },
+    ]);
+});
+*/
