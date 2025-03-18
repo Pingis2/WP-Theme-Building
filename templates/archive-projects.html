@@ -26,15 +26,10 @@
     <!-- /wp:buttons -->
     
     <!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search","width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /--></div>
-
-    <div id="filter-container">
-        <button data-language="english">English</button>
-        <button data-language="swedish">Swedish</button>
-        <button data-language="french">French</button>
-    </div>
-    <div id="posts-container"></div>
-
     <!-- /wp:group -->
+
+    <div id="language-filter-buttons"></div>
+    <div id="filtered-posts">
     
     <!-- wp:query {"queryId":48,"query":{"perPage":3,"pages":0,"offset":0,"postType":"projects","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-grid-posts","name":"Grid"}} -->
     <div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
@@ -79,5 +74,6 @@
     <!-- wp:query-pagination-next /-->
     <!-- /wp:query-pagination --></div>
     <!-- /wp:query -->
+    </div>
     
     <!-- wp:template-part {"slug":"footer-2","theme":"my-cool-theme","area":"footer"} /-->
