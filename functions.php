@@ -344,3 +344,38 @@ add_filter('rest_project_query', function ($args, $request) {
     }
     return $args;
 }, 10, 2);
+
+// Custom Api Endpoint
+
+function my_awesome_func( $data ) {
+    $posts = get_posts( array(
+        'post_type' => 'projects',
+        'author' => $data['id'],
+        'numberposts' => -1,
+    ));
+
+    if ( empty( $posts ) ) {
+        return new WP_Error( 'no_author', 'Invalid author', array( 'status' => 404 ) );
+    }
+
+    return array_map(function($post) {
+        return $post->post_title;
+    }, $posts);
+}
+
+add_action('rest_api_init', function () {
+    register_rest_route( 'my-endpoint/v1', '/author/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'my_awesome_func',
+        'args' => array(
+            'id' => array(
+                'validate_callback' => function($param, $request, $key) {
+                    return is_numeric($param);
+                }
+            )
+        ),
+        'permission_callback' => function () {
+            return true;
+        }
+    ));
+});
