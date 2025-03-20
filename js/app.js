@@ -29,12 +29,7 @@ const auth = {
 app.get('/posts', async (req, res) => {
     try {
 
-        const { language } = req.query;
-
         let apiUrl = 'http://localhost:8000/wp-json/wp/v2/projects';
-        if (language) {
-            apiUrl += `?lang=${language}`;
-        }
 
         const response = await axios.get(apiUrl, { auth });
         res.json(response.data);
